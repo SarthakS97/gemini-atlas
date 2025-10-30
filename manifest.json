@@ -1,0 +1,50 @@
+{
+    "manifest_version": 3,
+    "name": "Gemini Atlas",
+    "version": "2.0",
+    "description": "AI-powered assistant with summarization, Q&A, and text rewriting",
+    "icons": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "contextMenus",
+      "history",
+      "bookmarks",
+      "readingList"
+    ],
+    "host_permissions": [
+      "<all_urls>"
+    ],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["sidebar.js", "content.js"],
+        "run_at": "document_idle"
+      }
+    ],
+    "action": {},
+    "background": {
+      "service_worker": "background.js"
+    },
+    "commands": {
+      "toggleSidebar": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+Y",
+          "mac": "Command+Shift+Y"
+        },
+        "description": "Open/close Gemini Atlas sidebar"
+      },
+      "summarizePage": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+S",
+          "mac": "Command+Shift+S"
+        },
+        "description": "Summarize current page"
+      }
+    }
+  }
